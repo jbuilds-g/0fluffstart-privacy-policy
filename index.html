@@ -61,16 +61,21 @@
             standard browser navigation.
           </li>
           <li>
-          <strong>Strict Execution Chain:</strong>
-          <ol>
-            <li><strong>Custom Proxy (User-Defined):</strong> If you configure a custom proxy URL in Settings, all suggestion requests pass exclusively through that URL.</li>
-            <li><strong>Cloudflare Edge Worker Proxy (Default):</strong> If no custom proxy is defined, requests are routed through a dedicated serverless Cloudflare Edge Worker (<code>0fluffstart-suggest-proxy.jbuilds.workers.dev</code>). It enforces origin verification and rate-limiting (40 requests per minute per IP) to prevent service abuse without logging user queries or personal identifiers.</li>
-            <li><strong>AllOrigins Fallback:</strong> If the primary edge worker is unreachable or rate-limited, requests automatically fall back to <code>api.allorigins.win</code>.</li>
-          </ol>
-        </li>
-                <strong>AllOrigins Fallback:</strong> If the primary edge worker
-                is unreachable or rate-limited, requests automatically fall back
-                to <code>api.allorigins.win</code>.
+            <strong>Strict Execution Chain:</strong>
+            <ol>
+              <li>
+                <strong>Custom Proxy (User-Defined):</strong> If you configure a
+                custom proxy URL in Settings, all suggestion requests pass
+                exclusively through that URL.
+              </li>
+              <li>
+                <strong>Cloudflare Edge Worker Proxy (Default):</strong> If no
+                custom proxy is defined, requests are routed through a dedicated
+                serverless Cloudflare Edge Worker
+                (<code>0fluffstart-suggest-proxy.jbuilds.workers.dev</code>). It
+                enforces origin verification and rate-limiting (40 requests per
+                minute per IP) to prevent service abuse without logging user
+                queries or personal identifiers.
               </li>
             </ol>
           </li>

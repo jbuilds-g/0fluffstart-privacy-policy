@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - 0FluffStart</title>
+    <meta
+      name="description"
+      content="Official privacy policy for 0FluffStart browser extension and PWA."
+    />
+    <meta name="author" content="JBuilds" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Privacy Policy for 0FluffStart</h1>
+        <p class="effective-date">
+          <strong>Effective Date:</strong> August 3, 2026
+        </p>
+      </header>
+
+      <section>
+        <p>
+          0FluffStart is designed with a strict privacy-first philosophy. This
+          application operates locally within your browser and does not collect,
+          store, or transmit personal data to external servers.
+        </p>
+      </section>
+
+      <section>
+        <h2>1. Data Storage</h2>
+        <ul>
+          <li>
+            <strong>Local Storage:</strong> All user configurations, custom
+            quick links, custom backgrounds, and theme preferences are stored
+            exclusively on your device using standard browser storage mechanisms
+            (<code>localStorage</code> and <code>IndexedDB</code>).
+          </li>
+          <li>
+            <strong>No Server Analytics:</strong> 0FluffStart does not use
+            tracking scripts, telemetry, or third-party analytics services.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>2. External Network Requests & Search Execution</h2>
+        <ul>
+          <li>
+            <strong>Disabled by Default:</strong> 0FluffStart does not send
+            network requests out of the box. Search auto-suggestions are
+            strictly opt-in and can be toggled on or off in Settings at any
+            time.
+          </li>
+          <li>
+            <strong>Search Dispatching:</strong> User-initiated searches are
+            executed directly via the selected search provider's endpoint or
+            shortcut tags (e.g., <code>?g</code>, <code>?d</code>,
+            <code>?y</code>) using client-side URL parameters, or routed via
+            standard browser navigation.
+          </li>
+          <li>
+            <strong>Why Proxies Are Used:</strong> Upstream search autocomplete
+            APIs (Google, Bing, DuckDuckGo, Brave) do not return permissive
+            cross-origin (CORS) headers for standard web, PWA, or extension
+            environments. To make live search suggestions work securely across
+            origins, requests pass through a dedicated proxy layer.
+          </li>
+          <li>
+            <strong>Strict Execution Chain:</strong>
+            <ol>
+              <li>
+                <strong>Custom Proxy (User-Defined):</strong> If you configure a
+                custom proxy URL in Settings, all suggestion requests pass
+                exclusively through that URL.
+              </li>
+              <li>
+                <strong>Cloudflare Edge Worker Proxy (Default):</strong> If no
+                custom proxy is defined, requests are routed through a dedicated
+                serverless Cloudflare Edge Worker
+                (<code>0fluffstart-suggest-proxy.jbuilds.workers.dev</code>). It
+                enforces origin verification and rate-limiting (40 requests per
+                minute per IP) to prevent service abuse without logging user
+                queries or personal identifiers.
+              </li>
+              <li>
+                <strong>AllOrigins Fallback:</strong> If the primary edge worker
+                is unreachable or rate-limited, requests automatically fall back
+                to <code>api.allorigins.win</code>.
+              </li>
+            </ol>
+          </li>
+          <li>
+            <strong>Zero Tracking:</strong> Suggestion requests carry only the
+            raw query string and target search engine parameter. No cookies,
+            persistent identifiers, or telemetry data are ever attached, logged,
+            or stored.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Data Control & Portability</h2>
+        <p>
+          Users maintain full control over their data. You can export or import
+          your settings locally, clear your search history, or trigger a full
+          factory reset via <em>Settings &gt; Data Management</em>. You can also
+          completely purge all application data by clearing your browser cache.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Contact</h2>
+        <p>
+          For questions or concerns regarding this privacy policy, open an issue
+          on the official
+          <a
+            href="https://github.com/jbuilds-g/0FluffStart/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub repository</a
+          >.
+        </p>
+      </section>
+
+      <footer>
+        <hr />
+        <p class="policy-version">Policy Version: 1.1.0</p>
+      </footer>
+    </main>
+  </body>
+</html>
